@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 48px;
+            transition: font-family 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="hello-world">Hello World</div>
+    <script>
+        const fonts = ["Arial", "Verdana", "Helvetica", "Times New Roman", "Courier New", "Georgia"];
+        let index = 0;
+
+        function changeFont() {
+            document.body.style.fontFamily = fonts[index];
+            index = (index + 1) % fonts.length;
+        }
+
+        changeFont();
+        setInterval(changeFont, 60000);
+    </script>
+</body>
+</html>
