@@ -15,20 +15,54 @@
             transition: font-family 0.5s;
         }
     </style>
+    <!-- Placeholder for Google Fonts -->
+    <link id="google-font" rel="stylesheet" href="">
 </head>
 <body>
     <div id="hello-world">Hello World</div>
     <script>
-        const fonts = ["Arial", "Verdana", "Helvetica", "Times New Roman", "Courier New", "Georgia"];
-        let index = 0;
+        const fonts = [
+            "Lobster",
+            "Pacifico",
+            "Bungee",
+            "Bangers",
+            "Righteous",
+            "Chewy",
+            "Abril Fatface",
+            "Fredericka the Great",
+            "Amatic SC",
+            "Indie Flower"
+        ];
 
-        function changeFont() {
-            document.body.style.fontFamily = fonts[index];
-            index = (index + 1) % fonts.length;
+        let lastFontIndex = -1;
+
+        function getRandomFontIndex() {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * fonts.length);
+            } while (randomIndex === lastFontIndex);
+            lastFontIndex = randomIndex;
+            return randomIndex;
         }
 
+        function loadGoogleFont(fontName) {
+            const fontLink = document.getElementById('google-font');
+            fontLink.href = `https://fonts.googleapis.com/css2?family=${fontName.replace(/ /g, '+')}&display=swap`;
+
+            document.getElementById('hello-world').style.fontFamily = fontName;
+        }
+
+        function changeFont() {
+            const randomFontIndex = getRandomFontIndex();
+            const randomFont = fonts[randomFontIndex];
+            loadGoogleFont(randomFont);
+        }
+
+        // Initial call to set the first font
         changeFont();
-        setInterval(changeFont, 60000);
+
+        // Change font every minute (500 milliseconds)
+        setInterval(changeFont, 500);
     </script>
 </body>
 </html>
